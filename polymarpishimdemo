@@ -1,0 +1,69 @@
+
+public class PolymorphismDemo {
+class Shape {
+
+    // Compile-time Polymorphism (Method Overloading)
+    void area(int side) {
+        System.out.println("Area of Square: " + (side * side));
+    }
+
+    void area(int length, int breadth) {
+        System.out.println("Area of Rectangle: " + (length * breadth));
+    }
+
+    // Runtime Polymorphism (Method Overriding)
+    void draw() {
+        System.out.println("Drawing Shape");
+    }
+}
+
+class Circle extends Shape {
+
+    @Override
+    void draw() {
+        System.out.println("Drawing Circle");
+    }
+
+    void area(double radius) {
+        double result = Math.PI * radius * radius;
+        System.out.println("Area of Circle: " + result);
+    }
+}
+
+class Triangle extends Shape {
+
+    @Override
+    void draw() {
+        System.out.println("Drawing Triangle");
+    }
+
+    void area(double base, double height) {
+        double result = 0.5 * base * height;
+        System.out.println("Area of Triangle: " + result);
+    }
+}
+
+public class PolymorphismDemo {
+    public static void main(String[] args) {
+
+        // Runtime Polymorphism
+        Shape s;
+
+        s = new Circle();
+        s.draw();
+
+        s = new Triangle();
+        s.draw();
+
+        // Compile-time Polymorphism
+        Shape shape = new Shape();
+        shape.area(5);        // Square
+        shape.area(4, 6);     // Rectangle
+
+        Circle c = new Circle();
+        c.area(3.5);          // Circle
+
+        Triangle t = new Triangle();
+        t.area(4.0, 7.0);    // Triangle
+    }
+}
