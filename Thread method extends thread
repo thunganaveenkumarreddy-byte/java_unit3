@@ -1,0 +1,22 @@
+class ThreadMethodDemo extends Thread {
+
+    @Override
+    public void run() {
+        try {
+            System.out.println("Thread running: " + Thread.currentThread().getName());
+            Thread.sleep(1000);   // Sleep for 1 second
+            System.out.println("Thread finished");
+        } catch (InterruptedException e) {
+            System.out.println("Thread interrupted");
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+
+        ThreadMethodDemo t1 = new ThreadMethodDemo();
+        t1.start();   // Start the thread
+        t1.join();    // Main thread waits until t1 completes
+
+        System.out.println("Main thread resumes after t1 finishes");
+    }
+}
