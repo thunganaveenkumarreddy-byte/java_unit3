@@ -1,0 +1,20 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class ByteReadDemo {
+
+    public static void main(String[] args) {
+
+        // Try-with-resources ensures automatic closing of stream
+        try (FileInputStream fis = new FileInputStream("data.bin")) {
+
+            int ch;
+            while ((ch = fis.read()) != -1) {
+                System.out.println((char) ch);
+            }
+
+        } catch (IOException e) {
+            System.out.println("File reading error: " + e.getMessage());
+        }
+    }
+}IOExeption
